@@ -12,7 +12,6 @@ var an6 = document.getElementById("6");
 var an7 = document.getElementById("7");
 var an8 = document.getElementById("8");
 var an9 = document.getElementById("9");
-var answers = [an1, an2, an3, an4, an5, an6, an7, an8, an9];
 var ans = ["1", "2", "3", "4", "5", "6", "7", "8", "9"];
 var num1;
 var num2;
@@ -119,10 +118,10 @@ function setNum(value, id) {
     num4 = value;
     limit++;
   }
-  if (ids.length < 4){ console.log("the is is ", id);
-  ids.push(id);
-  document.getElementById(id).disabled = true;
-}
+  if (ids.length < 4){
+    ids.push(id);
+    document.getElementById(id).disabled = true;
+  }
 }
 function arrayEquals(a, b) {
   return (
@@ -132,36 +131,33 @@ function arrayEquals(a, b) {
     a.every((val, index) => val === b[index])
   );
 }
-// function setGuess(i) {
-//   if (i != 10){
-//     answers[i-1].innerText = num1 + " " + num2 + " " + num3 + " " + num4;
-//     if (i > 1) {
-//       answers[i-2].style.color = "blue";
-//     }
-//     answers[i-1].style.color = "red";
-//     num1 = "_";
-//     num2 = "_";
-//     num3 = "_";
-//     num4 = "_";
-//   } else if (i==10) {
-//     an1.innerText = num1 + " " + num2 + " " + num3 + " " + num4;
-//     an9.style.color = "blue";
-//     an1.style.color = "red";        
-//     answers.splice(
-//       0,
-//       1,
-//       num1 + " " + num2 + " " + num3 + " " + num4
-//     );
-//     num1 = "_";
-//     num2 = "_";
-//     num3 = "_";
-//     num4 = "_";
-//     guesses = 1;
-//   }
-// }
+function setGuess(i) {
+  i --;
+  if (i != 9){
+    document.getElementById(ans[i]).innerText =
+      num1 + " " + num2 + " " + num3 + " " + num4;
+    if (i > 0) {
+      document.getElementById(ans[i-1]).style.color = "blue";
+    }  
+    document.getElementById(ans[i]).style.color = "red";;
+    num1 = "_";
+    num2 = "_";
+    num3 = "_";
+    num4 = "_";
+  } else if (i==9) {
+    an1.innerText = num1 + " " + num2 + " " + num3 + " " + num4;
+    an9.style.color = "blue";
+    an1.style.color = "red";        
+    num1 = "_";
+    num2 = "_";
+    num3 = "_";
+    num4 = "_";
+    guesses = 1;
+  }
+}
 function guessAnswer(id) {
   if (limit == 4){
-    if ( arrayEquals(guess, rando) == true ){
+    if (arrayEquals(guess, rando) == true){
       tries++;
       won();
       document.getElementById("sub").disabled = true;
@@ -177,115 +173,17 @@ function guessAnswer(id) {
       numb3.innerText = "_";
       numb4.innerText = "_";
       guess = ["_", "_", "_", "_"];
-      console.log(num1);
-      console.log(placeCounter);
-      if (guesses <= 9){
-        answers.splice(
-          guesses - 1,
-          1,
-          num1 + " " + num2 + " " + num3 + " " + num4
-        );
       }
-      // setGuess(guesses);
-      if (guesses == 1) {
-        an1.innerText = num1 + " " + num2 + " " + num3 + " " + num4;
-        an1.style.color = "red";
-        num1 = "_";
-        num2 = "_";
-        num3 = "_";
-        num4 = "_";
-      } else if (guesses == 2) {
-        an2.innerText = num1 + " " + num2 + " " + num3 + " " + num4;      
-        an1.style.color = "blue";
-        an2.style.color = "red";
-        num1 = "_";
-        num2 = "_";
-        num3 = "_";
-        num4 = "_";
-      } else if (guesses == 3) {
-        an3.innerText = num1 + " " + num2 + " " + num3 + " " + num4;
-        an2.style.color = "blue";
-        an3.style.color = "red";       
-        num1 = "_";
-        num2 = "_";
-        num3 = "_";
-        num4 = "_";
-      } else if (guesses == 4) {
-        an4.innerText = num1 + " " + num2 + " " + num3 + " " + num4;
-        an3.style.color = "blue";
-        an4.style.color = "red";        
-        num1 = "_";
-        num2 = "_";
-        num3 = "_";
-        num4 = "_";
-      } else if (guesses == 5) {
-        an5.innerText = num1 + " " + num2 + " " + num3 + " " + num4;
-        an4.style.color = "blue";
-        an5.style.color = "red";        
-        num1 = "_";
-        num2 = "_";
-        num3 = "_";
-        num4 = "_";
-      } else if (guesses == 6) {
-        an6.innerText = num1 + " " + num2 + " " + num3 + " " + num4;
-        an5.style.color = "blue";
-        an6.style.color = "red";        
-        num1 = "_";
-        num2 = "_";
-        num3 = "_";
-        num4 = "_";
-      } else if (guesses == 7) {
-        an7.innerText = num1 + " " + num2 + " " + num3 + " " + num4;
-        an6.style.color = "blue";
-        an7.style.color = "red";        
-        num1 = "_";
-        num2 = "_";
-        num3 = "_";
-        num4 = "_";
-      } else if (guesses == 8) {
-        an8.innerText = num1 + " " + num2 + " " + num3 + " " + num4;
-        an7.style.color = "blue";
-        an8.style.color = "red";        
-        num1 = "_";
-        num2 = "_";
-        num3 = "_";
-        num4 = "_";
-      } else if (guesses == 9) {
-        an9.innerText = num1 + " " + num2 + " " + num3 + " " + num4;
-        an8.style.color = "blue";
-        an9.style.color = "red";        
-        num1 = "_";
-        num2 = "_";
-        num3 = "_";
-        num4 = "_";
-      } else if (guesses == 10) {
-        an1.innerText = num1 + " " + num2 + " " + num3 + " " + num4;
-        an9.style.color = "blue";
-        an1.style.color = "red";        
-        answers.splice(
-          0,
-          1,
-          num1 + " " + num2 + " " + num3 + " " + num4
-        );
-        num1 = "_";
-        num2 = "_";
-        num3 = "_";
-        num4 = "_";
-        guesses = 1;
-      }
+      setGuess(guesses);
     }
     if (win == false){
       for (var i = 0; i < ids.length; i++) {
         document.getElementById(ids[i]).disabled = false;
       }
       ids = [];
-    }
+  } else {
+      alert('plz enter the 4 digit.');
   }
-  else {
-    alert('plz enter the 4 digit.');
-  }
-
-  console.log(answers);
 }
 function won() {
   win = true;
@@ -340,7 +238,6 @@ function numCorrect() {
 }
 function placeCorrect() {
   placeCounter = 0;
-  console.log(guess[1]);
   if (rando[0] == guess[0]) {
     placeCounter++;
   }
@@ -354,10 +251,4 @@ function placeCorrect() {
     placeCounter++;
   }
   placeCount.innerText = placeCounter;
-}
-function checkValue(event){
-   console.log(event);
-  value = guess.indexOf(event);
-  console.log(value);
-  return false;
 }
