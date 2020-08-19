@@ -40,6 +40,9 @@ h3 {
     font-size: 20px;
     margin-bottom: 40px;
 }
+h3:last-child {
+    display: inline-block;
+}
 button {
     display: inline-block;
     -moz-box-align: center;
@@ -57,7 +60,8 @@ button:focus {
     outline: none;
 }
 button:hover {
-    background-color: #272727; 
+    background-color: #272727;
+    cursor: pointer;
 }
 button:disabled {
     background-color: #b3b3b38c;

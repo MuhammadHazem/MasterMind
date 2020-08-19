@@ -3,79 +3,30 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+    
     <title>MasterMind Game</title>
 
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Orbitron&display=swap"> 
-    <link rel="stylesheet" type="text/css" href="style2.css">
+    <link rel="stylesheet" type="text/css" href="style2.1.css">
 
 </head>
 <body>
-    <header>
-        <h1> MasterMind Game </h1> 
-    </header>
-    
-    
-    <div id="instruc">
-        <h4>Guess the number!</h4>
-        <h4>Choose 4 numbers</h4>
-        <h4>Numbers 1 to 9</h4>
-        <h4>No repeats allowed</h4>
-    </div>
 
-        <div id=game>
-
-            <h3 id="numb1">___</h3>
-            <h3 id="numb2">___</h3>
-            <h3 id="numb3">___</h3>
-            <h3 id="numb4">___</h3>
+    <div id="outer">
+        <div id="contain">
+            <h1>MasterMind Game</h1>
+            <span>Choose a difficulty:</span>
             <br>
+            <select id="difficulty">
+                <option value="3">Easy</option>
+                <option value="4">Intermediate</option>
+            </select>
             <br>
-            <button id="but1" onclick="setNum(1, 'but1')">1</button>
-            <button id="but2" onclick="setNum(2, 'but2')">2</button>
-            <button id="but3" onclick="setNum(3, 'but3')">3</button>
-            <br>
-            <button id="but4" onclick="setNum(4, 'but4')">4</button>
-            <button id="but5" onclick="setNum(5, 'but5')">5</button>
-            <button id="but6" onclick="setNum(6, 'but6')">6</button>
-            <br>
-            <button id="but7" onclick="setNum(7, 'but7')">7</button>
-            <button id="but8" onclick="setNum(8, 'but8')">8</button>
-            <button id="but9" onclick="setNum(9, 'but9')">9</button>
-            <br>
-            <br>
-            <button id="del" onclick="delAnswer()">Del</button>
-            <button id="sub" type="submit" onclick="guessAnswer()">Submit</button>
-            <button onclick="setGame()">Start</button>
+            <a href="index2.html" target="_self">
+                <button>Start</button>
+            </a>
         </div>
-
-
-    <div id="guesses">
-        <ul>
-            <li class="list" id="1">_ _ _ _</li>
-            <li class="list" id="2">_ _ _ _</li>
-            <li class="list" id="3">_ _ _ _</li>
-            <li class="list" id="4">_ _ _ _</li>
-            <li class="list" id="5">_ _ _ _</li>
-            <li class="list" id="6">_ _ _ _</li>
-            <li class="list" id="7">_ _ _ _</li>
-            <li class="list" id="8">_ _ _ _</li>
-            <li class="list" id="9">_ _ _ _</li>
-        </ul>
     </div>
-    <div id="counters">
-        <h2>Numbers Correct:</h2>
-        <span id="numCount">Insert Number Counter Here</span>
-        <h2>Number Placing Correct:</h2>
-        <span id="placeCount">Insert Placement Counter Here</span>
-    </div>
-   
 
-    <footer>
-        <h2 id="ender">Have Fun!</h2>
-        <h2 id="winner">You win text</h2>
-    </footer>
-
-    <script type="text/javascript" src="script.js"></script>
 </body>
 </html>

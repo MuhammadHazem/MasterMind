@@ -32,10 +32,26 @@ var tries = 0;
 var winner = document.getElementById("winner");
 var ids=[];
 var win = false;
+var diff = 3;
+
+function setDifficulty(){
+  if (diff == 3){
+    numb4.style.display = "none";
+    rando = [rando1, rando2, rando3];
+    guess = ["_", "_", "_"];
+    for (var i = 0; i < ans.length; i++) {
+      document.getElementById(ans[i]).innerText = "_ _ _";
+    }
+  } else if (diff == 4){
+    numb4.style.display = "inline-block";
+    rando = [rando1, rando2, rando3, rando4];
+    guess = ["_", "_", "_", "_"];
+  }
+}
 
 function ready(){
   randomize();
-  rando = [rando1, rando2, rando3, rando4];
+  setDifficulty();
   console.log(rando);
   numCounter = 0;
   numCount.innerText = numCounter;
@@ -47,7 +63,7 @@ ready();
 function setGame() {
   if (win == true){
     randomize();
-    rando = [rando1, rando2, rando3, rando4];
+    setDifficulty();
     console.log(rando);
     numCounter = 0;
     numCount.innerText = numCounter;
@@ -60,10 +76,13 @@ function setGame() {
     numb2.innerText = "_";
     numb3.innerText = "_";
     numb4.innerText = "_";
-    guess = ["_", "_", "_", "_"];
     for (var i = 0; i < ans.length; i++) {
       console.log("parameter", ans[i]);
-      document.getElementById(ans[i]).innerText = "_ _ _ _";
+      if (diff == 3){
+        document.getElementById(ans[i]).innerText = "_ _ _";
+      } else if (diff == 4){
+        document.getElementById(ans[i]).innerText = "_ _ _ _";
+      }
       document.getElementById(
         ans[i]
       ).style.color = document.getElementsByTagName("BODY")[0].style.color;
@@ -111,14 +130,14 @@ function setNum(value, id) {
     numb3.innerText = value;
     num3 = value;
     limit++;
-  } else if (limit == 3) {
+  } else if (limit == 3 && diff == 4) {
     guess[3] = value;
     console.log(guess);
     numb4.innerText = value;
     num4 = value;
     limit++;
   }
-  if (ids.length < 4){
+  if ((ids.length < 4 && diff == 4) || (ids.length < 3 && diff == 3)) {
     ids.push(id);
     document.getElementById(id).disabled = true;
   }
@@ -134,8 +153,13 @@ function arrayEquals(a, b) {
 function setGuess(i) {
   i --;
   if (i != 9){
-    document.getElementById(ans[i]).innerText =
-      num1 + " " + num2 + " " + num3 + " " + num4;
+    if (diff == 3){
+      document.getElementById(ans[i]).innerText =
+        num1 + " " + num2 + " " + num3;
+    } else if (diff == 4){
+      document.getElementById(ans[i]).innerText =
+        num1 + " " + num2 + " " + num3 + " " + num4;
+    }
     if (i > 0) {
       document.getElementById(ans[i-1]).style.color = "blue";
     }  
@@ -145,7 +169,11 @@ function setGuess(i) {
     num3 = "_";
     num4 = "_";
   } else if (i==9) {
-    an1.innerText = num1 + " " + num2 + " " + num3 + " " + num4;
+    if (diff == 3){
+      an1.innerText = num1 + " " + num2 + " " + num3;
+    } else if (diff == 4){
+      an1.innerText = num1 + " " + num2 + " " + num3 + " " + num4;
+    } 
     an9.style.color = "blue";
     an1.style.color = "red";        
     num1 = "_";
@@ -156,8 +184,8 @@ function setGuess(i) {
   }
 }
 function guessAnswer(id) {
-  if (limit == 4){
-    if (arrayEquals(guess, rando) == true){
+  if ((limit == 4 && diff == 4) || (limit == 3 && diff == 3)) {
+    if (arrayEquals(guess, rando) == true) {
       tries++;
       won();
       document.getElementById("sub").disabled = true;
@@ -172,18 +200,20 @@ function guessAnswer(id) {
       numb2.innerText = "_";
       numb3.innerText = "_";
       numb4.innerText = "_";
-      guess = ["_", "_", "_", "_"];
-      }
-      setGuess(guesses);
     }
-    if (win == false){
+    setGuess(guesses);
+    if (win == false) {
       for (var i = 0; i < ids.length; i++) {
         document.getElementById(ids[i]).disabled = false;
       }
       ids = [];
-  } else {
-      alert('plz enter the 4 digit.');
+    } 
+  } else if (diff == 4) {
+    alert("plz enter the 4 digits.");
+  } else if (diff == 3) {
+    alert("plz enter the 3 digits.");
   }
+  
 }
 function won() {
   win = true;
@@ -211,7 +241,7 @@ function delAnswer() {
     document.getElementById(ids[2]).disabled = false;
     ids.splice(2, 1);
     limit--;
-  } else if (limit == 4) {
+  } else if (limit == 4 && diff == 4) {
     guess.splice(3, 1, "_");
     document.getElementById(ids[3]).disabled = false;
     ids.splice(3, 1);
@@ -247,7 +277,7 @@ function placeCorrect() {
   if (rando[2] == guess[2]) {
     placeCounter++;
   }
-  if (rando[3] == guess[3]) {
+  if (rando[3] == guess[3] && diff == 4) {
     placeCounter++;
   }
   placeCount.innerText = placeCounter;
