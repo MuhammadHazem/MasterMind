@@ -32,24 +32,16 @@ var tries = 0;
 var winner = document.getElementById("winner");
 var ids=[];
 var win = false;
-var diff; 
-function changeDiff(){
- console.log(document.getElementById("difficulty").value);
- localStorage.setItem(
-   "mode",
-   document.getElementById("difficulty").value
- );
-}
+var diff = localStorage.getItem('mode'); 
 function setDifficulty(){
-   console.log(diff);
-  if (localStorage.getItem('mode') == 3) {
+  if (diff == 3) {
     numb4.style.display = "none";
     rando = [rando1, rando2, rando3];
     guess = ["_", "_", "_"];
     for (var i = 0; i < ans.length; i++) {
       document.getElementById(ans[i]).innerText = "_ _ _";
     }
-  } else if (localStorage.getItem('mode') == 4) {
+  } else if (diff == 4) {
     numb4.style.display = "inline-block";
     rando = [rando1, rando2, rando3, rando4];
     guess = ["_", "_", "_", "_"];
