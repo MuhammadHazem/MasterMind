@@ -32,11 +32,13 @@ var tries = 0;
 var winner = document.getElementById("winner");
 var ids=[];
 var win = false;
-var diff = localStorage.getItem('mode'); 
+var diff = localStorage.getItem('mode');
+
 function setDifficulty(){
   if (diff == 3) {
     numb4.style.display = "none";
     rando = [rando1, rando2, rando3];
+    document.getElementById("choose").innerText = "Choose 3 numbers";
     guess = ["_", "_", "_"];
     for (var i = 0; i < ans.length; i++) {
       document.getElementById(ans[i]).innerText = "_ _ _";
@@ -44,6 +46,7 @@ function setDifficulty(){
   } else if (diff == 4) {
     numb4.style.display = "inline-block";
     rando = [rando1, rando2, rando3, rando4];
+    document.getElementById("choose").innerText = "Choose 3 numbers";
     guess = ["_", "_", "_", "_"];
     for (var i = 0; i < ans.length; i++) {
       document.getElementById(ans[i]).innerText = "_ _ _ _";
@@ -78,6 +81,8 @@ function setGame() {
     numb2.innerText = "_";
     numb3.innerText = "_";
     numb4.innerText = "_";
+    document.getElementById("counters").style.display = "block";
+    document.getElementById("new").style.display = "none";
     for (var i = 0; i < ans.length; i++) {
       console.log("parameter", ans[i]);
       if (diff == 3){
@@ -202,8 +207,9 @@ function guessAnswer(id) {
       numb2.innerText = "_";
       numb3.innerText = "_";
       numb4.innerText = "_";
+      setGuess(guesses);
     }
-    setGuess(guesses);
+    
     if (win == false) {
       for (var i = 0; i < ids.length; i++) {
         document.getElementById(ids[i]).disabled = false;
@@ -218,9 +224,10 @@ function guessAnswer(id) {
   
 }
 function won() {
+  document.getElementById("counters").style.display = "none";
   win = true;
-  winner.style.display = "inline-block";
-  document.getElementById("ender").style.width = "49%";
+  document.getElementById("new").style.display = "inline-block";
+  winner.style.display = "block";
   winner.innerText = "You have won in " + tries + " times!";
 }
 function delAnswer() {

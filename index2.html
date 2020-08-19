@@ -21,7 +21,7 @@
     
     <div id="instruc">
         <h4>Guess the number!</h4>
-        <h4>Choose 4 numbers</h4>
+        <h4 id="choose">Choose 4 numbers</h4>
         <h4>Numbers 1 to 9</h4>
         <h4>No repeats allowed</h4>
     </div>
@@ -49,7 +49,7 @@
             <br>
             <button id="del" onclick="delAnswer()">Del</button>
             <button id="sub" type="submit" onclick="guessAnswer()">Submit</button>
-            <button onclick="setGame()">Start</button>
+            <button id="new" onclick="setGame()">Start</button>
         </div>
 
 
@@ -75,8 +75,8 @@
    
 
     <footer>
-        <h2 id="ender">Have Fun!</h2>
         <h2 id="winner">You win text</h2>
+        <h2 id="ender">Have Fun!</h2>
     </footer>
 
     <script type="text/javascript" src="script.js"></script>
