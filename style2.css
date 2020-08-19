@@ -7,7 +7,16 @@ body {
 }
 header {
     font-size: 20px;
-    text-align: center;
+    
+}
+h1 {
+    display: inline-block;
+    width: 50%;
+    margin-left: 10px;
+}
+#back {
+    float: right;
+    margin-top: 15px;
 }
 #instruc {
     display: inline-block;

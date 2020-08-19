@@ -17,16 +17,14 @@
             <h1>MasterMind Game</h1>
             <span>Choose a difficulty:</span>
             <br>
-            <select id="difficulty">
-                <option value="3">Easy</option>
+            <select id="difficulty" onchange="changeDiff()">
+                <option value="3" selected>Easy</option>
                 <option value="4">Intermediate</option>
             </select>
             <br>
-            <a href="index2.html" target="_self">
-                <button>Start</button>
-            </a>
+            <button onclick="start()">Start</button>
         </div>
     </div>
-
+   <script type="text/javascript" src="script.js"></script>
 </body>
 </html>

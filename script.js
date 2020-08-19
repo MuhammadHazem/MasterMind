@@ -32,20 +32,30 @@ var tries = 0;
 var winner = document.getElementById("winner");
 var ids=[];
 var win = false;
-var diff = 3;
-
+var diff; 
+function changeDiff(){
+ console.log(document.getElementById("difficulty").value);
+ localStorage.setItem(
+   "mode",
+   document.getElementById("difficulty").value
+ );
+}
 function setDifficulty(){
-  if (diff == 3){
+   console.log(diff);
+  if (localStorage.getItem('mode') == 3) {
     numb4.style.display = "none";
     rando = [rando1, rando2, rando3];
     guess = ["_", "_", "_"];
     for (var i = 0; i < ans.length; i++) {
       document.getElementById(ans[i]).innerText = "_ _ _";
     }
-  } else if (diff == 4){
+  } else if (localStorage.getItem('mode') == 4) {
     numb4.style.display = "inline-block";
     rando = [rando1, rando2, rando3, rando4];
     guess = ["_", "_", "_", "_"];
+    for (var i = 0; i < ans.length; i++) {
+      document.getElementById(ans[i]).innerText = "_ _ _ _";
+    }
   }
 }
 
@@ -281,4 +291,11 @@ function placeCorrect() {
     placeCounter++;
   }
   placeCount.innerText = placeCounter;
+}
+function start(){
+   console.log(document.getElementById("difficulty").value);
+ localStorage.setItem(
+   "mode",
+   document.getElementById("difficulty").value);
+   window.location.href = "/index2.html";
 }
