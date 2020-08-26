@@ -33,6 +33,7 @@ var winner = document.getElementById("winner");
 var ids=[];
 var win = false;
 var diff = localStorage.getItem('mode');
+var players = [];
 
 function setDifficulty(){
   if (diff == 3) {
@@ -84,7 +85,6 @@ function setGame() {
     document.getElementById("counters").style.display = "block";
     document.getElementById("new").style.display = "none";
     for (var i = 0; i < ans.length; i++) {
-      console.log("parameter", ans[i]);
       if (diff == 3){
         document.getElementById(ans[i]).innerText = "_ _ _";
       } else if (diff == 4){
@@ -95,8 +95,11 @@ function setGame() {
       ).style.color = document.getElementsByTagName("BODY")[0].style.color;
     }
     win = false;
-    document.getElementById("sub").disabled = false;
-    document.getElementById("del").disabled = false;
+    document.getElementById("sub").style.display = "inline-block";
+    document.getElementById("del").style.display = "inline-block";
+    document.getElementById("save").style.display = "none";
+    document.getElementById("save").innerHTML = "Save Score";
+    document.getElementById("save").disabled = false;
     winner.style.display = "none";
     document.getElementById("ender").style.width = "100%";
     winner.innerText = "You have won in " + tries + " times!";
@@ -195,8 +198,9 @@ function guessAnswer(id) {
     if (arrayEquals(guess, rando) == true) {
       tries++;
       won();
-      document.getElementById("sub").disabled = true;
-      document.getElementById("del").disabled = true;
+      document.getElementById("sub").style.display = "none";
+      document.getElementById("del").style.display = "none";
+      document.getElementById("save").style.display = "inline-block";
     } else {
       tries++;
       guesses++;
@@ -297,4 +301,18 @@ function start(){
    "mode",
    document.getElementById("difficulty").value);
    window.location.href = "/index2.html";
+}
+function scores(){
+  window.location.href = "http://localhost:5000/";
+}
+function save(){
+  document.getElementById("pop").style.display = "block";
+}
+function saving() {
+  var username = document.getElementById("name").value;
+  document.getElementById("pop").style.display = "none";
+  players.push({username, diff, tries});
+  console.log(players);
+  document.getElementById("save").innerHTML = "Saved!";
+  document.getElementById("save").disabled = true;
 }

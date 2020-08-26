@@ -1,0 +1,49 @@
+body {
+    background-color: #000000;
+    margin: 0;
+    color: #7cfc00;
+    text-shadow: 2px 2px 3px #7cfc00;
+    font-family:'Orbitron', sans-serif;
+    
+}
+header {
+    font-size: 25px;
+    
+}
+h1 {
+    display: inline-block;
+    width: 50%;
+    margin-left: 10px;
+}
+#back {
+    float: right;
+    margin-top: 15px;
+}
+button {
+    display: inline-block;
+    -moz-box-align: center;
+    width: 20%;
+    margin: 3px;
+    padding: 30px;
+    font-size: 18px;
+    background-color: #000000;
+    color: #7cfc00;
+    border-color: #7cfc00;
+    font-weight: bolder;
+    border-radius: 50%;
+}
+button:focus {
+    outline: none;
+}
+button:hover {
+    background-color: #272727;
+    cursor: pointer;
+}
+
+table {
+    width: 80%;
+    margin: auto;
+}
+th {
+    width: 32%;
+}

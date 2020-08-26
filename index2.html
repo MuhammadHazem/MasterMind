@@ -7,7 +7,7 @@
     <title>MasterMind Game</title>
 
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Orbitron&display=swap"> 
-    <link rel="stylesheet" type="text/css" href="style2.css">
+    <link rel="stylesheet" type="text/css" href="CSS/style2.2.css">
 
 </head>
 <body>
@@ -47,6 +47,7 @@
             <button id="but9" onclick="setNum(9, 'but9')">9</button>
             <br>
             <br>
+            <button id="save" onclick="save()">Save Score</button>
             <button id="del" onclick="delAnswer()">Del</button>
             <button id="sub" type="submit" onclick="guessAnswer()">Submit</button>
             <button id="new" onclick="setGame()">Start</button>
@@ -73,6 +74,20 @@
         <span id="placeCount">Insert Placement Counter Here</span>
     </div>
    
+    <div id="pop">
+        <table id="popup">
+            <tr>
+                <td>
+                    Enter Username: 
+                    <br>
+                    <br>
+                    <input name="username" id="name" type="text"/>
+                    <br>
+                    <button id="bank" type="submit" onclick="saving()">Back</button>
+                </td>
+            </tr>
+        </table>
+    </div>
 
     <footer>
         <h2 id="winner">You win text</h2>
