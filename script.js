@@ -34,7 +34,7 @@ var ids=[];
 var win = false;
 var diff = localStorage.getItem('mode');
 var players = [];
-
+var player;
 function setDifficulty(){
   if (diff == 3) {
     numb4.style.display = "none";
@@ -64,6 +64,7 @@ function ready(){
   placeCounter = 0;
   placeCount.innerText = placeCounter;
   tries = 0;
+  document.getElementById("array").value = "";
 }
 ready();
 function setGame() {
@@ -107,6 +108,7 @@ function setGame() {
       document.getElementById(ids[i]).disabled = false;
     }
     ids = [];
+  document.getElementById("array").value = "";
   }
 }
 function randomize(){
@@ -297,22 +299,46 @@ function placeCorrect() {
 }
 function start(){
    console.log(document.getElementById("difficulty").value);
- localStorage.setItem(
-   "mode",
-   document.getElementById("difficulty").value);
-   window.location.href = "/index2.html";
+   localStorage.setItem(
+    "mode",
+    document.getElementById("difficulty").value);
+  window.location.href = "/index2.html";
 }
 function scores(){
-  window.location.href = "http://localhost:5000/";
+  window.location.href = "http://localhost:5000/scores";
 }
 function save(){
   document.getElementById("pop").style.display = "block";
 }
 function saving() {
+  if (localStorage.getItem("scr")) {
+    console.log(JSON.parse(localStorage.getItem("users")));
+    players = JSON.parse(localStorage.getItem("users"));
+  }
   var username = document.getElementById("name").value;
-  document.getElementById("pop").style.display = "none";
+  console.log(players.length);
   players.push({username, diff, tries});
-  console.log(players);
+  
+  player = JSON.stringify(players);
+  
+  // document.cookie = player;
+  localStorage.setItem("users", player);
+  localStorage.setItem("scr", true);
+  document.getElementById("array").value = player;
+  console.log(document.getElementById("array").value);
+  document.getElementById("pop").style.display = "none";
   document.getElementById("save").innerHTML = "Saved!";
   document.getElementById("save").disabled = true;
 }
+document.getElementById("update").disabled = false;
+async function update() {
+  var response = await fetch("/users.json");
+  var data = await response.json();
+  for (var i = 0; i < data.length; i++){
+    $(".board").append(
+      `<tr><td align="center">${data[i].username}</td><td align="center">${data[i].diff}</td><td align="center">${data[i].tries}</td></tr>`
+    );
+  }
+  document.getElementById("update").disabled = true;
+}
+

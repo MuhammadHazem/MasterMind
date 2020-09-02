@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Scores</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Orbitron&display=swap"> 
-    <link rel="stylesheet" type="text/css" href= "CSS/style2.3.css">
+    <link rel="stylesheet" type="text/css" href="CSS/style2.3.css">
 
 </head>
 <body>
@@ -16,15 +16,17 @@
             <button id="back">Main Menu</button>
         </a>
     </header>
-    <table id="board">
-        <thead>
+    <div id="container">
+        <table class="board">
             <tr>
                 <th>Username</th>
                 <th>Difficulty</th>
                 <th>Tries</th>
             </tr>
-        </thead>
-        <tbody></tbody>
-    </table>
+        </table>
+    </div>
+    <button id="update" onclick="update()">Update</button>
+    <script type="text/javascript" src="script.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.0.js"></script>
 </body>
 </html>

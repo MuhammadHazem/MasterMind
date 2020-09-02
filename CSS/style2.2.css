@@ -165,9 +165,12 @@ span {
     margin-left: -150px;
     text-align: center;
 }
-#unsave {
+#bank {
     margin-top: 25px;
     width: 35%;
+}
+#confirm {
+    display: none;
 }
 input {
     text-align: center;

@@ -78,12 +78,15 @@
         <table id="popup">
             <tr>
                 <td>
-                    Enter Username: 
+                    Enter Username:
                     <br>
                     <br>
                     <input name="username" id="name" type="text"/>
-                    <br>
-                    <button id="bank" type="submit" onclick="saving()">Back</button>
+                    <form method="post">
+                        <input name="array" id="array" type="hidden" value="">
+                        <br>
+                        <button id="bank" onclick="saving()" formaction="/index2">Save</button>
+                    </form>
                 </td>
             </tr>
         </table>
